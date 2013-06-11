@@ -8,6 +8,7 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -21,7 +22,7 @@ DATABASES = {
 
 
 #if 'DATABASE_URL' does no exist, then it's local machine
-import os
+import os, dj_database_url
 if os.environ.has_key('DATABASE_URL'):
     DATABASES['default'] =  dj_database_url.config(default=os.environ['DATABASE_URL'])
     #STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
