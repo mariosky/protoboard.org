@@ -1,5 +1,8 @@
 # Django settings for protoboard project.
 
+import os, dj_database_url
+
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -8,6 +11,15 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+
+STATICFILES_STORAGE =  'storages.backends.s3boto.S3BotoStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'protoboard'
+
+STATIC_URL = '/static/'
 
 DATABASES = {
     'default': {
@@ -22,10 +34,11 @@ DATABASES = {
 
 
 #if 'DATABASE_URL' does no exist, then it's local machine
-import os, dj_database_url
+
 if os.environ.has_key('DATABASE_URL'):
     DATABASES['default'] =  dj_database_url.config(default=os.environ['DATABASE_URL'])
-    #STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+    STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
@@ -70,7 +83,7 @@ STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -112,11 +125,15 @@ ROOT_URLCONF = 'protoboard.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'protoboard.wsgi.application'
 
-TEMPLATE_DIRS = (
+
+
+#TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-)
+#)
+TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),)
+
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -125,6 +142,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'activity',
+    'storages',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

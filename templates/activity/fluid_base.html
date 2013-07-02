@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title> {% block title %} protoboard.org {% endblock title %} </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="{{ STATIC_URL }}/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}/protoboard/css/protoboard.css" rel="stylesheet">
+
+      <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ STATIC_URL }}/bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ STATIC_URL }}/bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ STATIC_URL }}/bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}/bootstrap/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="{{ STATIC_URL }}/bootstrap/ico/favicon.png">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">{% block sitename %}protoboard.org {% endblock sitename %} </a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              Logged in as <a href="#" class="navbar-link">Username</a>
+            </p>
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+          <div class="well sidebar-nav">
+              {% block nav %}
+            <ul class="nav nav-list">
+              <li class="nav-header">Programación Orientada a Objetos</li>
+
+                <div class="dd">
+                    <ol class="dd-list">
+                        <li class="dd-item" data-id="1">
+                            <div class="dd-handle">Unidad 2. Analisis de señales periodicas en el tiempo: Series de Fourier</div>
+
+                            <ol class="dd-list">
+                                <li class="dd-item" data-id="4">
+                                    <div class="dd-handle">Introduction</div>
+                                </li>
+
+                                <li class="dd-item" data-id="4">
+                                    <div class="dd-handle">Activity</div>
+                                </li>
+
+                                <li class="dd-item" data-id="4">
+                                    <div class="dd-handle">Filter image results by color</div>
+                                </li>
+
+                                <li class="dd-item" data-id="5">
+                                    <div class="dd-handle ">Item 5</div>
+                                    <ol class="dd-list">
+                                        <li class="dd-item" data-id="4">
+                                            <div class="dd-handle">Item 4</div>
+                                        </li>
+
+                                        <li class="dd-item" data-id="5">
+                                            <div class="dd-handle">Item 5</div>
+                                        </li>
+                                    </ol>
+
+                                </li>
+                            </ol>
+                        </li>
+                        <li class="dd-item" data-id="2">
+                            <div class="dd-handle">Item 2</div>
+                        </li>
+                        <li class="dd-item" data-id="3">
+                            <div class="dd-handle">Item 3</div>
+                            <ol class="dd-list">
+                                <li class="dd-item" data-id="4">
+                                    <div class="dd-handle">Item 4</div>
+                                </li>
+
+                                <li class="dd-item" data-id="5">
+                                    <div class="dd-handle">Unidad 2. Analisis de señales periodicas en el tiempo: Series de Fourier</div>
+                                    <ol class="dd-list">
+                                        <li class="dd-item" data-id="4">
+                                            <div class="dd-handle">Item 4</div>
+                                        </li>
+
+                                        <li class="dd-item" data-id="5">
+                                            <div class="dd-handle">Item 5</div>
+                                        </li>
+                                    </ol>
+
+                                </li>
+                            </ol>
+
+
+                        </li>
+                    </ol>
+                </div>
+
+
+            </ul>
+              {% endblock nav %}
+
+          </div><!--/.well -->
+        </div><!--/span-->
+
+
+        <div class="span8">
+            {% block content %}
+
+
+
+            {% endblock content %}
+        </div><!--/span-->
+
+          <div class="span2">
+
+          </div>
+
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2013</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ STATIC_URL }}/bootstrap/js/jquery.js"></script>
+    <script src="{{ STATIC_URL }}/bootstrap/js/bootstrap-transition.js"></script>
+    <script src="{{ STATIC_URL }}/bootstrap/js/bootstrap-alert.js"></script>
+    <script src="{{ STATIC_URL }}/bootstrap/js/bootstrap-modal.js"></script>
+    <script src="{{ STATIC_URL }}/bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="{{ STATIC_URL }}/bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="{{ STATIC_URL }}/bootstrap/js/bootstrap-tab.js"></script>
+    <script src="{{ STATIC_URL }}/bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="{{ STATIC_URL }}/bootstrap/js/bootstrap-popover.js"></script>
+    <script src="{{ STATIC_URL }}/bootstrap/js/bootstrap-button.js"></script>
+    <script src="{{ STATIC_URL }}/bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="{{ STATIC_URL }}/bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="{{ STATIC_URL }}/bootstrap/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>
